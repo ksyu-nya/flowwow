@@ -9,8 +9,11 @@ import java.util.List;
 
 
 public interface ItemRepository extends JpaRepository<Item, Long> {
-    Page <Item> findAll(Pageable pageable);
-    Page <Item> findByCategoryId(Long categoryId, Pageable pageable);
-    List <Item> findByHitTrue();
+    List <Item> findAll();
+    List <Item> findByIsHitTrue();
     List <Item> findByIsNewTrue();
+    List<Item> findByCategory(String category);
+    // Получить все уникальные категории (для фильтров)
+    List<String> findDistinctCategory();
+
 }

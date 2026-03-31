@@ -3,6 +3,9 @@ package com.flower.model.entity;
 
 import jakarta.persistence.*;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
 import lombok.Data;
 
 import java.math.BigDecimal;
@@ -16,12 +19,15 @@ public class Item {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank(message = "Название обязательно")
     @Column(nullable = false)
     private String name;
 
     @Column(nullable = false, length = 1000)
     private String description;
 
+    @NotNull(message = "Цена обязательна")
+    @Positive(message = "Цена должна быть положительной")
     @Column(nullable = false, precision = 10, scale = 2)
     private BigDecimal price;
 
@@ -31,8 +37,7 @@ public class Item {
     private Boolean isHit = false;
     private Boolean isNew = false;
 
-    @ManyToOne
-    @JoinColumn(name = "category_id")
-    private Category category;
+    @NotBlank(message = "Категория обязательна")
+    private String category;
 
 }
