@@ -30,7 +30,7 @@ public class JwtUtil {
      * Получить SecretKey из строки secret
      */
     private SecretKey getSigningKey() {
-        return Keys.hmacShaKeyFor(secret.getBytes(StandardCharsets.UTF_8));
+        return Keys.hmacShaKeyFor(secret.getBytes(  StandardCharsets.UTF_8));
     }
 
     public String generateToken(User user) {

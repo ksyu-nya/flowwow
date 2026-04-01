@@ -14,6 +14,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
+import java.util.Iterator;
 
 @Component
 @RequiredArgsConstructor
@@ -29,6 +30,16 @@ public class JwtAuthFilter extends OncePerRequestFilter {
             FilterChain filterChain) throws ServletException, IOException {
 
         final String authHeader = request.getHeader("Authorization");
+
+        System.out.println("\n\n\n\n========================");
+
+        Iterator<String> iterator = request.getHeaderNames().asIterator();
+
+        while (iterator.hasNext()) {
+            System.out.println("header: " + iterator.next());
+        }
+        System.out.println("\nMETHOD: " + request.getMethod());
+        System.out.println("\nAUTH HEADER: " + authHeader + "\n\n\n\n");
 
         if (authHeader == null || !authHeader.startsWith("Bearer ")) {
             filterChain.doFilter(request, response);
