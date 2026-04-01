@@ -16,7 +16,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ItemService {
 
-private ItemRepository itemRepository;
+private final ItemRepository itemRepository;
 
     public List<Item> findAll() {
         return itemRepository.findAll();

@@ -13,10 +13,10 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/items")
+@RequestMapping("/api/items")
 @RequiredArgsConstructor
 public class ItemController {
-    private ItemService itemService;
+    private final ItemService itemService;
 
     @GetMapping
     public ResponseEntity<List<Item>> getAllItems() {
